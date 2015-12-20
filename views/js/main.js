@@ -422,7 +422,7 @@ var resizePizzas = function(size) {
   changeSliderLabel(size);
 
 
-  // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
+  // Returns the size a pizza element should be displayed at given a certain label (defined above). Called by changePizzaSlices(size).
   function changePizzaSizes(size) {
     switch(size) {
       case "1":
@@ -438,7 +438,7 @@ var resizePizzas = function(size) {
         console.log("bug in sizeSwitcher");
     }
 
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    var randomPizzas = document.querySelectorAll(".randomPizzaContainer"); //From solution in Browser Rendering Optimization course
 
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
@@ -496,7 +496,7 @@ function updatePositions() {
   var constArray =[];
   var i;
 
-  //Generates the same five values from longer loop to avoid Forced Synchronous Layout. Source: https://gist.github.com/prather-mcs/05526bb379f845ee2ba1
+  //Generates the same five values from longer loop to avoid running this math on every iteration. Source: https://gist.github.com/prather-mcs/05526bb379f845ee2ba1
   for (i = 0; i < 5; i++) {
       constArray.push(Math.sin((top / 1250) + i));
     }
