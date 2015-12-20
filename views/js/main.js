@@ -490,9 +490,20 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+//This was marked as Forced Synchronous Layout. Doing layout before style
+  var items = document.getElementsByClassName('mover');
+  var top = document.body.scrollTop; //simplify the lookup. Source https://discussions.udacity.com/t/project-4-how-do-i-optimize-the-background-pizzas-for-loop/36302
+  var constArray =[];
+  var i;
+
+  //Generates the same five values from longer loop to avoid Forced Synchronous Layout. Source: https://gist.github.com/prather-mcs/05526bb379f845ee2ba1
+  for (i = 0; i < 5; i++) {
+      constArray.push(Math.sin((top / 1250) + i));
+    }
+
+  //Complete math to animate pizzas moving
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = constArray[i % 5];
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
