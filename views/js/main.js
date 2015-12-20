@@ -490,7 +490,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-//This was marked as Forced Synchronous Layout. Doing layout before style
+//Establishes location of background pizzas and stores values
   var items = document.getElementsByClassName('mover');
   var top = document.body.scrollTop; //simplify the lookup. Source https://discussions.udacity.com/t/project-4-how-do-i-optimize-the-background-pizzas-for-loop/36302
   var constArray =[];
@@ -522,7 +522,7 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
+  var cols = 6;
   var s = 256;
   for (var i = 0; i < 30; i++) {
     var elem = document.createElement('img');
